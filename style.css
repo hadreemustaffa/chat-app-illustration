@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+  --ff-primary: 'Rubik', sans-serif;
+
+  --fs-lg: 2.5rem;
+  --fs-md: 1rem;
+  --fs-sm: 0.75rem;
+  --fs-xs: 0.688rem;
+  --fs-xxs: 0.5rem;
+
+  --fw-bold: 700;
+  --fw-medium: 500;
+  --fw-regular: 400;
+
+  --clr-text-username: hsl(276, 100%, 81%);
+  --clr-text-chat-receive: hsl(276, 55%, 52%);
+  --clr-text-chat-send: hsl(271, 15%, 43%);
+  --clr-text-placeholder: hsl(206, 7%, 79%);
+  --clr-text-heading: hsl(271, 36%, 24%);
+  --clr-text-body: hsl(268, 7%, 64%);
+
+  --clr-bg-body: hsl(270, 20%, 96%);
+  --clr-bg-btn-submit: hsl(271, 36%, 24%);
+  --clr-circle-outline: hsl(289, 100%, 72%);
+  --clr-bg-gradient: linear-gradient(
+    to bottom,
+    hsl(293, 100%, 63%),
+    hsl(264, 100%, 61%)
+  );
+}
