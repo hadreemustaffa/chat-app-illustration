@@ -21,7 +21,7 @@ svg {
 }
 input,
 button,
-textarea,
+area,
 select {
   font: inherit;
 }
@@ -48,19 +48,269 @@ h6 {
   --fw-medium: 500;
   --fw-regular: 400;
 
-  --clr-text-username: hsl(276, 100%, 81%);
-  --clr-text-chat-receive: hsl(276, 55%, 52%);
-  --clr-text-chat-send: hsl(271, 15%, 43%);
-  --clr-text-placeholder: hsl(206, 7%, 79%);
-  --clr-text-heading: hsl(271, 36%, 24%);
-  --clr-text-body: hsl(268, 7%, 64%);
+  --clr-lightest: hsl(0, 0%, 100%);
+  --clr-light: hsl(270, 20%, 96%);
+  --clr-darkest: hsl(271, 15%, 43%);
+  --clr-chat-status: hsl(276, 100%, 81%);
+  --clr-chat-receive: hsl(276, 55%, 52%);
+  --clr-chat-send: var(--clr-darkest);
+  --clr-placeholder: hsl(206, 7%, 79%);
+  --clr-heading: hsl(271, 36%, 24%);
+  --clr-body: hsl(268, 7%, 64%);
 
   --clr-bg-body: hsl(270, 20%, 96%);
+  --clr-bg-chat-receive: hsl(272, 38%, 92%);
   --clr-bg-btn-submit: hsl(271, 36%, 24%);
   --clr-circle-outline: hsl(289, 100%, 72%);
-  --clr-bg-gradient: linear-gradient(
-    to bottom,
-    hsl(293, 100%, 63%),
-    hsl(264, 100%, 61%)
+  --clr-gradient-1: #e942ff;
+  --clr-gradient-2: #8838ff;
+}
+
+/* typography */
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  color: var(--clr-body);
+}
+h1 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-heading);
+}
+.chat__header-user__name {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--clr-light);
+}
+.chat__header-user__status {
+  font-size: var(--fs-xxs);
+  color: var(--clr-chat-status);
+}
+.chat__message-bubble {
+  font-size: var(--fs-xxs);
+}
+.chat__message-bubble--receive {
+  color: var(--clr-chat-receive);
+}
+.chat__message-bubble--send {
+  color: var(--clr-chat-send);
+}
+.chat__message-bubble--package {
+  line-height: 1;
+  color: var(--clr-light);
+}
+.chat__message-bubble--package-price {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--clr-lightest);
+}
+.chat__message-input__placeholder {
+  font-size: var(--fs-xxs);
+  color: var(--clr-placeholder);
+}
+
+/* layout */
+body {
+  display: grid;
+  place-content: center;
+  background-color: var(--clr-bg-body);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  width: 250px;
+  position: relative;
+  background-color: white;
+  box-shadow: 5px 0 50px -15px var(--clr-body);
+  padding: 0.75rem;
+  border-radius: 2rem;
+}
+.chat__notch {
+  width: 50%;
+  height: 5%;
+  background-color: var(--clr-lightest);
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  translate: -50% 0;
+  border-radius: 1rem;
+}
+.chat__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 0.25rem;
+  padding: 1.75rem 1rem 0.75rem;
+  border-radius: 1.25rem 1.25rem 0.5rem 0.5rem;
+  background: linear-gradient(
+    to left,
+    var(--clr-gradient-1),
+    var(--clr-gradient-2)
   );
+}
+.chat__header-arrow {
+  width: 6px;
+  height: 6px;
+  border: solid var(--clr-bg-body);
+  border-width: 2px 0 0 2px;
+  rotate: -45deg;
+}
+.chat__header-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.chat__header-user img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-bg-body);
+}
+.chat__header-menu {
+  width: 2px;
+  height: 2px;
+  background-color: var(--clr-chat-status);
+  position: relative;
+}
+.chat__header-menu::before,
+.chat__header-menu::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: inherit;
+}
+.chat__header-menu::before {
+  top: -3px;
+}
+.chat__header-menu::after {
+  top: 3px;
+}
+.chat__message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: 100%;
+  background-color: var(--clr-bg-body);
+  padding: 0.5rem;
+  border-radius: 0.25rem 0.25rem 1.25rem 1.25rem;
+}
+.chat__message-bubble {
+  width: 65%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.chat__message-bubble--receive {
+  background-color: var(--clr-bg-chat-receive);
+  border-bottom-left-radius: 0.25rem;
+}
+.chat__message-bubble--send {
+  background-color: var(--clr-lightest);
+  border-bottom-right-radius: 0.25rem;
+}
+.chat__message-media {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.chat__message-media img {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+}
+.chat__message-bubble--send,
+.chat__message-media--send {
+  margin-left: auto;
+  margin-right: 0;
+}
+.chat__message-bubble--package {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+  align-items: center;
+  column-gap: 0.5rem;
+  border-bottom-left-radius: 0.25rem;
+  background: linear-gradient(
+    to right,
+    var(--clr-gradient-1),
+    var(--clr-gradient-2)
+  );
+}
+.chat__message-bubble--package-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  border: 1px solid var(--clr-circle-outline);
+}
+
+.chat__message-input {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem 0.5rem;
+  border-radius: 2rem;
+  background-color: var(--clr-lightest);
+  position: relative;
+}
+.chat__message-input__submit {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--clr-bg-btn-submit);
+  right: 0.25rem;
+  top: 50%;
+  translate: 0 -50%;
+  border-radius: 100%;
+}
+.chat__message-input__submit::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: solid var(--clr-bg-body);
+  border-width: 2px 0 0 2px;
+  right: 43%;
+  top: 50%;
+  translate: 0 -50%;
+  rotate: 135deg;
+}
+
+.pattern {
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  top: 0;
+  left: -50%;
+  z-index: -1;
+}
+.pattern.left {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-gradient-1),
+    var(--clr-gradient-2) 83%
+  );
+  border-bottom-right-radius: 15rem;
+}
+
+/* utility class */
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.justify-between {
+  justify-content: space-between;
 }
