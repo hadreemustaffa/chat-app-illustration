@@ -14,22 +14,22 @@
 
 <body>
   <main>
-    <div class="pattern-left"></div>
-    <div class="pattern-right"></div>
+    <div class="pattern left"></div>
+    <div class="pattern right"></div>
 
     <div class="chat container">
       <div class="chat__notch"></div>
 
       <div class="chat__header">
         <div class="chat__header-arrow"></div>
-        <div class="chat__user">
+        <div class="chat__header-user">
           <img src="./images/avatar.jpg" alt="">
-          <div class="chat__user-text">
-            <p class="chat__user-name">Samuel Green</p>
-            <p class="chat__user-status">Available to Walk</p>
+          <div class="chat__header-user__text">
+            <p class="chat__header-user__name">Samuel Green</p>
+            <p class="chat__header-user__status">Available to Walk</p>
           </div>
         </div>
-        <div class="chat__menu-dots"></div>
+        <div class="chat__header-menu"></div>
       </div>
 
       <div class="chat__message">
@@ -57,25 +57,21 @@
           <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
         </div>
 
-        <div class="chat__message-bubble chat__message-bubble--receive chat__message-bubble--package">
+        <div class="chat__message-bubble chat__message-bubble--package">
           <div class="chat__message-bubble--package-circle"></div>
-          <div class="flex flex-row justify-between">
-            <p>30 minute walk</p>
-            <p>$29</p>
-          </div>
+          <p>30 minute walk</p>
+          <p class="chat__message-bubble--package-price">$29</p>
         </div>
 
-        <div class="chat__message-bubble chat__message-bubble--receive chat__message-bubble--package">
+        <div class="chat__message-bubble chat__message-bubble--package">
           <div class="chat__message-bubble--package-circle"></div>
-          <div class="flex flex-row justify-between">
-            <p>1 hour walk</p>
-            <p class="chat__message-bubble--package-price">$49</p>
-          </div>
+          <p>1 hour walk</p>
+          <p class="chat__message-bubble--package-price">$49</p>
         </div>
 
         <div class="chat__message-input">
           <p class="chat__message-input__placeholder">Type a message…</p>
-          <div class="chat__message-input__submit-btn"></div>
+          <div class="chat__message-input__submit"></div>
         </div>
       </div>
     </div>
