@@ -326,6 +326,25 @@ main::after {
   padding: 0;
 }
 
+/* animation */
+.chat__message-bubble,
+.chat__message-media {
+  opacity: 0;
+}
+.chat {
+  animation: fade-from-left 1s ease-in;
+}
+.chat__message-bubble--receive,
+.chat__message-bubble--package {
+  animation: fade-from-left 1s ease-in;
+  animation-fill-mode: forwards;
+}
+.chat__message-bubble--send,
+.chat__message-media--send {
+  animation: fade-from-right 1s ease-in;
+  animation-fill-mode: forwards;
+}
+
 @media (min-width: 48rem) {
   main {
     flex-direction: row;
@@ -346,6 +365,27 @@ main::after {
 
   .description {
     text-align: start;
+  }
+}
+
+@keyframes fade-from-left {
+  0% {
+    translate: -50% 0;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes fade-from-right {
+  from {
+    opacity: 0;
+    translate: 50% 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0;
   }
 }
 
